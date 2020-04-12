@@ -9,7 +9,8 @@ export const elements =
     selected_recipe : $('.recipe'),
     shopping_list : $('.shopping__list'),
     result_buttons : $('.results__pages'),
-    likes_list : $('.likes__list')
+    likes_list : $('.likes__list'),
+    shopping_list : $('.shopping__list')
 }
 
 export const selectors = 
@@ -21,7 +22,10 @@ export const selectors =
   ingredients : '.recipe__count',
   servings_button : '.btn-increase, .btn-decrease',
   ingredients_list : '.recipe__ingredient-list',
-  like_button : '.recipe__love'
+  like_button : '.recipe__love',
+  recipe_button : '.recipe__btn',
+  list_delete : '.shopping__delete',
+  list_item : '.shopping__item'
 }
 
 export class Utils
