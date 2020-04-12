@@ -38,7 +38,11 @@ class Controller
 	static likeControl()
 	{
 		LikeModel.toggleLike();
-		console.log(window.likes);
+		LikeView.resetFileds();
+		LikeView.updateView();
+		RecipeView.resetFields();
+		RecipeView.updateView();
+		addRecipeHandlers();
 	}
 	static async searchControl()
 	{
@@ -63,6 +67,8 @@ class Controller
 		RecipeView.resetFields();
 		RecipeView.updateView();
 		LikeModel.loadLikes();
+		LikeView.resetFileds();
+		LikeView.updateView();
 	}
 	static setup()
 	{

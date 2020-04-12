@@ -80,6 +80,7 @@ export default class Recipe
             window.selected.link = recipe.source_url;
             window.selected.serving = 1;
             window.selected.ingredients = this.parseIngredients(recipe.ingredients);
+            window.selected.liked = window.likes.find(item => item.id == id) == undefined ? false : true;
         }
         catch(error)
         {

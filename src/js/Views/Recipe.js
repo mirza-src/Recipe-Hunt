@@ -72,7 +72,7 @@ export default class Recipe
             </div>
             <button class="recipe__love">
                 <svg class="header__likes">
-                    <use href="img/icons.svg#icon-heart"></use>
+                    <use href="img/icons.svg#icon-heart${ window.selected.liked ? '' : '-outlined'}"></use>
                 </svg>
             </button>
         </div>

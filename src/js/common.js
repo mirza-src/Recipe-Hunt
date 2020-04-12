@@ -9,6 +9,7 @@ export const elements =
     selected_recipe : $('.recipe'),
     shopping_list : $('.shopping__list'),
     result_buttons : $('.results__pages'),
+    likes_list : $('.likes__list')
 }
 
 export const selectors = 
@@ -33,4 +34,12 @@ export class Utils
         </svg>
       </div>`);
     }
+    static fitString(title, limit)
+    {
+      if (title.length > limit)
+      {
+        return title.substring(0, limit) + '...';
+      }
+      return title.substring(0, limit);
+    };
 }

@@ -7,15 +7,17 @@ export default class Like
             {
                 id : window.selected.id,
                 title : window.selected.title,
-                imag : window.selected.image_url,
-                author : window.selected.publisher
+                image : window.selected.image,
+                author : window.selected.author,
             }
         );
+        window.selected.liked = true;
         this.writeLikes()
     }
     static removeLike(index)
     {
         window.likes.splice(index, 1);
+        window.selected.liked = false;
         this.writeLikes();
     }
 
@@ -34,10 +36,6 @@ export default class Like
         {
             this.addLike();
         }
-    }
-    static exist(item)
-    {
-        return (window.likes.find(like => like.id == window.selected.id) != undefined)
     }
 
     static writeLikes()

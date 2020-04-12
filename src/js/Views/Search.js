@@ -3,14 +3,6 @@ import {elements, selectors, Utils} from '../common';
 
 export default class Search
 {
-	static fitString(title, limit)
-	{
-		if (title.length > limit)
-		{
-			return title.substring(0, limit) + '...';
-		}
-		return title.substring(0, limit);
-	};
 	static itemHTML(recipe)
 	{
 		return `
@@ -19,8 +11,8 @@ export default class Search
 				<img src="${recipe.image_url}" alt="${recipe.title}">
 			</figure>
 			<div class="results__data">
-				<h4 class="results__name">${this.fitString(recipe.title, 15)}</h4>
-				<p class="results__author">${this.fitString(recipe.publisher, 25)}</p>
+				<h4 class="results__name">${Utils.fitString(recipe.title, 15)}</h4>
+				<p class="results__author">${Utils.fitString(recipe.publisher, 25)}</p>
 			</div>
         </li>`;
 	}
