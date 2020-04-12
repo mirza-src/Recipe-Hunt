@@ -17,7 +17,15 @@ export const elements =
     likes_list : $('.likes__list'),
     results_list : $('.results__list'),
     selected_recipe : $('.recipe'),
-    shopping_list : $('.shopping__list')
+    shopping_list : $('.shopping__list'),
+    result_buttons : $('.results__pages'),
+}
+
+export const selectors = 
+{
+  next_button : '.results__btn--next',
+  prev_button : '.results__btn--prev',
+  search_item : '.search_item'
 }
 
 export class Utils
