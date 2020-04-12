@@ -20,7 +20,7 @@ export const selectors =
   ingredients : '.recipe__count',
   servings_button : '.btn-increase, .btn-decrease',
   ingredients_list : '.recipe__ingredient-list',
-  like_button : 'recipe__love'
+  like_button : '.recipe__love'
 }
 
 export class Utils

@@ -6,6 +6,8 @@ import SearchModel from './Models/Search';
 import SearchView from './Views/Search';
 import RecipeModel from './Models/Recipe';
 import RecipeView from './Views/Recipe';
+import LikeModel from './Models/Like';
+import LikeView from './Views/Like';
 
 function addSearchHandlers()
 {
@@ -17,6 +19,7 @@ function addSearchHandlers()
 function addRecipeHandlers()
 {
 	$(selectors.servings_button).click(Controller.servingsHandler);
+	$(selectors.like_button).click(Controller.likeControl);
 }
 
 class Controller
@@ -31,6 +34,11 @@ class Controller
 	{
 		RecipeModel.updateServings(parseInt(this.dataset.amount));
 		RecipeView.updateServings();
+	}
+	static likeControl()
+	{
+		LikeModel.toggleLike();
+		console.log(window.likes);
 	}
 	static async searchControl()
 	{
@@ -52,6 +60,9 @@ class Controller
 	{
 		SearchView.resetFields();
 		SearchView.updateView();
+		RecipeView.resetFields();
+		RecipeView.updateView();
+		LikeModel.loadLikes();
 	}
 	static setup()
 	{

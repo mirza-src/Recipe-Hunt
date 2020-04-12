@@ -36,6 +36,11 @@ export default class Recipe
     }
     static updateView()
     {
+        if ($.isEmptyObject(window.selected))
+        {
+            elements.selected_recipe.append('<p class="results__author" style="text-align:center;background-color:white">Select a recipe to view it here</p>');
+            return
+        }
         var html = `
         <figure class="recipe__fig">
             <img src="${window.selected.image}" alt="${window.selected.title}" class="recipe__img">

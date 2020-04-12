@@ -222,7 +222,8 @@ body {
     transition: all .5s .2s; }
 
 .results,
-.likes {
+.likes,
+.selected {
   padding: 3rem 0; }
   .results__list,
   .likes__list {

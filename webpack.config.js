@@ -79,5 +79,9 @@ module.exports =
 	devServer:
 	{
 		contentBase: './build'
-    }
+	},
+	node:
+	{
+		fs: 'empty'
+	}
 };

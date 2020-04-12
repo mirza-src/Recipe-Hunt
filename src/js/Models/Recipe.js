@@ -73,6 +73,7 @@ export default class Recipe
         try
         {
             var recipe = (await $.get(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)).recipe;
+            window.selected.id = id;
             window.selected.title = recipe.title;
             window.selected.image = recipe.image_url;
             window.selected.author = recipe.publisher;
