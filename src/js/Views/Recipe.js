@@ -1,8 +1,31 @@
 
-import {elements, Utils} from '../common'
+import {elements, selectors, Utils} from '../common';
+import $ from 'jquery'
+import fracty from 'fracty';
 
 export default class Recipe
 {
+    static formatCount(count){
+        if (count) {
+          return `${fracty(count)}`;
+        }
+        return '?';
+      };
+    static ingredientHTML(ingredient)
+    {
+        return `
+        <li class="recipe__item">
+            <svg class="recipe__icon">
+                <use href="img/icons.svg#icon-check"></use>
+            </svg>
+            <div class="recipe__count">${this.formatCount(ingredient.count)}</div>
+            <div class="recipe__ingredient">
+                <span class="recipe__unit">${ingredient.unit}</span>
+                ${ingredient.ingredient}
+            </div>
+        </li>
+      `
+    }
     static resetFields()
     {
         elements.selected_recipe.html('');
@@ -15,7 +38,7 @@ export default class Recipe
     {
         var html = `
         <figure class="recipe__fig">
-            <img src="${window.selected.image_url}" alt="${window.selected.title}" class="recipe__img">
+            <img src="${window.selected.image}" alt="${window.selected.title}" class="recipe__img">
             <h1 class="recipe__title">
                 <span>${window.selected.title}</span>
             </h1>
@@ -29,12 +52,12 @@ export default class Recipe
                 <span class="recipe__info-text"> servings</span>
   
                 <div class="recipe__info-buttons">
-                    <button class="btn-tiny btn-decrease">
+                    <button class="btn-tiny btn-decrease" data-amount="-1">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-minus"></use>
                         </svg>
                     </button>
-                    <button class="btn-tiny btn-increase">
+                    <button class="btn-tiny btn-increase" data-amount="1">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-plus"></use>
                         </svg>
@@ -53,6 +76,7 @@ export default class Recipe
   
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
+            ${window.selected.ingredients.map(el => this.ingredientHTML(el)).join('')}
             </ul>
   
             <button class="btn-small recipe__btn recipe__btn--add">
@@ -67,9 +91,9 @@ export default class Recipe
             <h2 class="heading-2">How to cook it</h2>
             <p class="recipe__directions-text">
                 This recipe was carefully designed and tested by
-                <span class="recipe__by">${window.selected.publisher}</span>. Please check out directions at their website.
+                <span class="recipe__by">${window.selected.author}</span>. Please check out directions at their website.
             </p>
-            <a class="btn-small recipe__btn" href="${window.selected.source_url}" target="_blank">
+            <a class="btn-small recipe__btn" href="${window.selected.link}" target="_blank">
                 <span>Directions</span>
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-triangle-right"></use>
@@ -79,5 +103,10 @@ export default class Recipe
         </div>
       `;
       elements.selected_recipe.append(html);
+    }
+    static updateServings()
+    {
+        $(selectors.servings).html(`${window.selected.serving}`);
+        $(selectors.ingredients_list).html(window.selected.ingredients.map(el => this.ingredientHTML(el)).join(''));
     }
 }

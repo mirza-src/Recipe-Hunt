@@ -14,13 +14,23 @@ function addSearchHandlers()
 	$(selectors.prev_button).click(Controller.pageHandler);
 }
 
+function addRecipeHandlers()
+{
+	$(selectors.servings_button).click(Controller.servingsHandler);
+}
+
 class Controller
 {
-	static pageHandler(event)
+	static pageHandler()
 	{
 		SearchView.resetFields();
 		SearchView.updateView(parseInt(this.dataset.offset));
 		addSearchHandlers();
+	}
+	static servingsHandler()
+	{
+		RecipeModel.updateServings(parseInt(this.dataset.amount));
+		RecipeView.updateServings();
 	}
 	static async searchControl()
 	{
@@ -28,6 +38,7 @@ class Controller
 		await SearchModel.getResults(SearchView.getQuery());
 		SearchView.resetFields();
 		SearchView.updateView();
+		addSearchHandlers();
 	}
 	static async recipeControl()
 	{
@@ -35,6 +46,7 @@ class Controller
 		await RecipeModel.getRecipe(this.id);
 		RecipeView.resetFields();
 		RecipeView.updateView();
+		addRecipeHandlers();
 	}
 	static defaultRender()
 	{
@@ -49,13 +61,7 @@ class Controller
 		window.shopping = [];
 		window.likes = [];
 		this.defaultRender();
-		elements.search_button.click(()=>
-		{
-			this.searchControl().then(()=>
-			{
-				addSearchHandlers();
-			})
-		});
+		elements.search_button.click(this.searchControl);
 	}
 }
 

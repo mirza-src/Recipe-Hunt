@@ -226,10 +226,10 @@ body {
   padding: 3rem 0; }
   .results__list,
   .likes__list {
-    list-style: none; }
-  .results__link:link, .results__link:visited,
-  .likes__link:link,
-  .likes__link:visited {
+    list-style: none;
+    cursor: pointer;
+  }
+  .results__link, .likes__link {
     display: flex;
     align-items: center;
     padding: 1.5rem 3rem;

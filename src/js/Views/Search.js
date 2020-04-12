@@ -14,16 +14,14 @@ export default class Search
 	static itemHTML(recipe)
 	{
 		return `
-        <li class="search_item" id="${recipe.recipe_id}">
-            <a class="results__link" href="#${recipe.recipe_id}">
-                <figure class="results__fig">
-                    <img src="${recipe.image_url}" alt="${recipe.title}">
-                </figure>
-                <div class="results__data">
-                    <h4 class="results__name">${this.fitString(recipe.title, 15)}</h4>
-                    <p class="results__author">${this.fitString(recipe.publisher, 25)}</p>
-                </div>
-            </a>
+        <li class="results__link" id="${recipe.recipe_id}">
+			<figure class="results__fig">
+				<img src="${recipe.image_url}" alt="${recipe.title}">
+			</figure>
+			<div class="results__data">
+				<h4 class="results__name">${this.fitString(recipe.title, 15)}</h4>
+				<p class="results__author">${this.fitString(recipe.publisher, 25)}</p>
+			</div>
         </li>`;
 	}
 	static buttonsHTML(offset, n)
@@ -84,7 +82,6 @@ export default class Search
 			var limit = window.results.length < end ? window.results.length : end;
 			for (var i = offset ; i < limit ; i++)
 			{
-				console.log(i)
 				elements.results_list.append(this.itemHTML(window.results[i]));
 			}
 			elements.result_buttons.html(this.buttonsHTML(offset, n));

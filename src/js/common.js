@@ -1,15 +1,5 @@
 import $ from "jquery";
 
-// export const elements =
-// {
-//     search_button : $('#search-button'),
-//     search_input : $('#search-field'),
-//     likes_list : $('#likes-list'),
-//     results_list : $('#results-list'),
-//     selected_recipe : $('#selected-recipe'),
-//     shopping_list : $('#shopping-list')
-// }
-
 export const elements =
 {
     search_button : $('.search__btn'),
@@ -25,7 +15,12 @@ export const selectors =
 {
   next_button : '.results__btn--next',
   prev_button : '.results__btn--prev',
-  search_item : '.search_item'
+  search_item : '.results__link',
+  servings : '.recipe__info-data--people',
+  ingredients : '.recipe__count',
+  servings_button : '.btn-increase, .btn-decrease',
+  ingredients_list : '.recipe__ingredient-list',
+  like_button : 'recipe__love'
 }
 
 export class Utils
