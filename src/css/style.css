@@ -633,6 +633,7 @@ img
 	border: 15px solid white;
 	border-top-color:rgba(0,0,0,0.2);
 	animation: loading 1.2s linear infinite;
+	margin: 20px auto;
 }
 
 @keyframes loading

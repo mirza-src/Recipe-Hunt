@@ -6,7 +6,7 @@ export default class Like
     static likeHTML(like)
     {
         var html =  `
-        <li class="result-item shadow-pointer">
+        <li class="result-item shadow-pointer" id="${like.id}">
             <div class="result-image">
                 <img src="${like.image}" alt="${like.id}">
             </div>

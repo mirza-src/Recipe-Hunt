@@ -54,7 +54,7 @@ function addRecipeHandlers()
 
 function addLikeHandlers()
 {
-
+	$(selectors.search_item).click(Controller.recipeControl);
 }
 
 function addListHandlers()
@@ -80,6 +80,7 @@ class Controller
 		RecipeView.resetFields();
 		RecipeView.updateView();
 		addRecipeHandlers();
+		addLikeHandlers();
 	}
 	static async searchControl()
 	{
@@ -106,8 +107,11 @@ class Controller
 		LikeModel.loadLikes();
 		LikeView.resetFileds();
 		LikeView.updateView();
+		addLikeHandlers();
+		// ListView.loadList();
 		ListView.resetFields();
 		ListView.updateView();
+		addListHandlers();
 	}
 	static setup()
 	{

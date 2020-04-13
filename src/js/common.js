@@ -30,18 +30,6 @@ export class Utils
 {
     static displayLoader(element)
     {
-        element.html(`<div class="loader">
-        <svg>
-          <use href="img/icons.svg#icon-cw"></use>
-        </svg>
-      </div>`);
+        element.html(`<div class="loading"></div>`);
     }
-    static fitString(title, limit)
-    {
-      if (title.length > limit)
-      {
-        return title.substring(0, limit) + '...';
-      }
-      return title.substring(0, limit);
-    };
 }
