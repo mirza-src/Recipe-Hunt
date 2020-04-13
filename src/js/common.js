@@ -2,30 +2,28 @@ import $ from "jquery";
 
 export const elements =
 {
-    search_button : $('.search__btn'),
-    search_input : $('.search__field'),
-    likes_list : $('.likes__list'),
-    results_list : $('.results__list'),
+    search_button : $('.search-icon'),
+    search_input : $('.search-input'),
+    likes_list : $('#likes-list'),
+    results_list : $('.results-list'),
     selected_recipe : $('.recipe'),
-    shopping_list : $('.shopping__list'),
-    result_buttons : $('.results__pages'),
-    likes_list : $('.likes__list'),
-    shopping_list : $('.shopping__list')
+    shopping_list : $('#shopping-list'),
+    result_buttons : $('.results__pages')
 }
 
 export const selectors = 
 {
   next_button : '.results__btn--next',
   prev_button : '.results__btn--prev',
-  search_item : '.results__link',
-  servings : '.recipe__info-data--people',
-  ingredients : '.recipe__count',
-  servings_button : '.btn-increase, .btn-decrease',
-  ingredients_list : '.recipe__ingredient-list',
-  like_button : '.recipe__love',
-  recipe_button : '.recipe__btn',
-  list_delete : '.shopping__delete',
-  list_item : '.shopping__item'
+  search_item : '.result-item',
+  servings : '.servings-count',
+  ingredients : '.ingredient-amount',
+  servings_button : '.servings-button',
+  ingredients_list : '.ingredients-list',
+  like_button : '.recipe-like',
+  recipe_button : '#ingredients-button',
+  list_delete : '.delete-icon',
+  list_item : '.list-item'
 }
 
 export class Utils

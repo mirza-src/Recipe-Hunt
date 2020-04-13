@@ -1,6 +1,10 @@
-import '../css/style.css'
-import "regenerator-runtime/runtime.js";
+
 import $ from "jquery";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import '../css/style.css'
+
+import "regenerator-runtime/runtime.js";
 import {elements, selectors} from './common';
 import SearchModel from './Models/Search';
 import SearchView from './Views/Search';

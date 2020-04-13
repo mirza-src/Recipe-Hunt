@@ -6,17 +6,15 @@ export default class List
     static ingredientHTML(name, ingredient)
     {
         let html = `
-        <li class="shopping__item" data-id="${ingredient.id}" data-name="${name}">
-            <div class="shopping__count">
-                <input type="number" value="${ingredient.amount}" min="0" class="shopping__count--value">
-                <p>${ingredient.unit}</p>
+        <li class="list-item" data-id="${ingredient.id}" data-name="${name}">
+            <div class="item-count">
+                <input type="number" value="${ingredient.amount}" min="0">
+                <span class="item-unit">${ingredient.unit}</span>
             </div>
-            <p class="shopping__description">${name}</p>
-            <button class="shopping__delete btn-tiny">
-                <svg>
-                    <use href="img/icons.svg#icon-circle-with-cross"></use>
-                </svg>
-            </button>
+            <div class="item-name recipe-text">${name}</div>
+            <div class="delete-icon shadow-pointer">
+                <img src="img/times-circle.svg">
+            </div>
         </li>
         `;
         return html;
@@ -27,6 +25,11 @@ export default class List
     }
     static updateView()
     {
+        var n = Object.keys(window.shopping).length;
+        if (n == 0)
+        {
+            elements.shopping_list.append('<p class="empty-msg">Shopping List is Empty</p>');
+        }
         for (var [key, value] of Object.entries(window.shopping))
         {
             elements.shopping_list.append(this.ingredientHTML(key, value));

@@ -6,15 +6,16 @@ export default class Search
 	static itemHTML(recipe)
 	{
 		return `
-        <li class="results__link" id="${recipe.recipe_id}">
-			<figure class="results__fig">
+		<li class="result-item shadow-pointer" id="${recipe.recipe_id}">
+			<div class="result-image">
 				<img src="${recipe.image_url}" alt="${recipe.title}">
-			</figure>
-			<div class="results__data">
-				<h4 class="results__name">${Utils.fitString(recipe.title, 15)}</h4>
-				<p class="results__author">${Utils.fitString(recipe.publisher, 25)}</p>
 			</div>
-        </li>`;
+			<div class="result-info">
+				<div class="result-name">${recipe.title}</div>
+				<div class="result-author">${recipe.publisher}</div>
+			</div>
+		</li>
+		`;
 	}
 	static buttonsHTML(offset, n)
 	{
@@ -61,11 +62,11 @@ export default class Search
 		{
 			if (window.query == '')
 			{
-				elements.results_list.append('<p class="results__author" style="text-align:center">Search to view results</p>');
+				elements.results_list.append('<p class="empty-msg">Search to view results</p>');
 			}
 			else
 			{
-				elements.results_list.append('<p class="results__author" style="text-align:center">No results found</p>');
+				elements.results_list.append('<p class="empty-msg">No results found</p>');
 			}
 		}
 		else

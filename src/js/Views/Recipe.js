@@ -14,17 +14,12 @@ export default class Recipe
     static ingredientHTML(ingredient)
     {
         return `
-        <li class="recipe__item">
-            <svg class="recipe__icon">
-                <use href="img/icons.svg#icon-check"></use>
-            </svg>
-            <div class="recipe__count">${this.formatCount(ingredient.count)}</div>
-            <div class="recipe__ingredient">
-                <span class="recipe__unit">${ingredient.unit}</span>
-                ${ingredient.ingredient}
-            </div>
+        <li class="ingredient-item">
+            <img src="img/check-circle.svg">
+            <span class="ingredient-amount recipe-text">${this.formatCount(ingredient.count)} ${ingredient.unit}</span>
+            <span class="ingredient-name recipe-text">${ingredient.ingredient}</span>
         </li>
-      `
+       `;
     }
     static resetFields()
     {
@@ -38,72 +33,56 @@ export default class Recipe
     {
         if ($.isEmptyObject(window.selected))
         {
-            elements.selected_recipe.append('<p class="results__author" style="text-align:center;background-color:white">Select a recipe to view it here</p>');
-            return
+            elements.selected_recipe.append("<p class='empty-msg'>Select a recipe to view it's details</p>");
+            return;
         }
+        var flag = window.selected.liked;
         var html = `
-        <figure class="recipe__fig">
-            <img src="${window.selected.image}" alt="${window.selected.title}" class="recipe__img">
-            <h1 class="recipe__title">
+        <div class="recipe-image">
+            <img src="${window.selected.image}" alt="${window.selected.title}">
+        </div>
+        <div class="recipe-name">
+            <a href="${window.selected.link}">
                 <span>${window.selected.title}</span>
-            </h1>
-        </figure>
-        <div class="recipe__details">
-            <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                    <use href="img/icons.svg#icon-man"></use>
-                </svg>
-                <span class="recipe__info-data recipe__info-data--people">1</span>
-                <span class="recipe__info-text"> servings</span>
-  
-                <div class="recipe__info-buttons">
-                    <button class="btn-tiny btn-decrease" data-amount="-1">
-                        <svg>
-                            <use href="img/icons.svg#icon-circle-with-minus"></use>
-                        </svg>
-                    </button>
-                    <button class="btn-tiny btn-increase" data-amount="1">
-                        <svg>
-                            <use href="img/icons.svg#icon-circle-with-plus"></use>
-                        </svg>
-                    </button>
+            </a>
+        </div>
+        <div class="recipe-controls">
+            <div class="recipe-servings">
+                <img src="img/user-friends.svg">
+                <span class="servings-count recipe-text">1</span><span class="recipe-text"> Serving</span>
+                <div class="servings-buttons">
+                    <div class="servings-button plus shadow-pointer">
+                        <img src="img/minus-circle.svg">
+                    </div>
+                    <div class="servings-button plus shadow-pointer">
+                        <img src="img/plus-circle.svg">
+                    </div>
                 </div>
-  
             </div>
-            <button class="recipe__love">
-                <svg class="header__likes">
-                    <use href="img/icons.svg#icon-heart${ window.selected.liked ? '' : '-outlined'}"></use>
-                </svg>
-            </button>
+            <div class="recipe-like shadow-pointer">
+                <img src="img/heart-outline.svg" ${flag ? 'class="hidden"' : ''}>
+                <img src="img/heart.svg" ${flag ? '' : 'class="hidden"'}>
+            </div>
         </div>
-  
-  
-  
-        <div class="recipe__ingredients">
-            <ul class="recipe__ingredient-list">
-            ${window.selected.ingredients.map(el => this.ingredientHTML(el)).join('')}
+        <div class="recipe-ingredients">
+            <div class="recipe-titles">Ingredients</div>
+            <ul class="ingredients-list">
+                ${window.selected.ingredients.map(el => this.ingredientHTML(el)).join('')}
             </ul>
-  
-            <button class="btn-small recipe__btn recipe__btn--add">
-                <svg class="search__icon">
-                    <use href="img/icons.svg#icon-shopping-cart"></use>
-                </svg>
+            <div class="recipe-button shadow-pointer" id="ingredients-button">
+                <img src="img/shopping-cart.svg">
                 <span>Add to shopping list</span>
-            </button>
+            </div>
         </div>
-  
-        <div class="recipe__directions">
-            <h2 class="heading-2">How to cook it</h2>
-            <p class="recipe__directions-text">
-                This recipe was carefully designed and tested by
-                <span class="recipe__by">${window.selected.author}</span>. Please check out directions at their website.
-            </p>
-            <a class="btn-small recipe__btn" href="${window.selected.link}" target="_blank">
-                <span>Directions</span>
-                <svg class="search__icon">
-                    <use href="img/icons.svg#icon-triangle-right"></use>
-                </svg>
-  
+        <div class="recipe-directions">
+            <div class="recipe-titles">Directions</div>
+            <div class="recipe-msg">
+                This recipe was created by 
+                <span class="recipe-text">${window.selected.author}</span>. Please check out directions at their website.
+            </div>
+            <a class="recipe-button shadow-pointer" id="directions-button" href="${window.selected.link}">
+                <img src="img/shopping-cart.svg">
+                <span>View Directions</span>
             </a>
         </div>
       `;
