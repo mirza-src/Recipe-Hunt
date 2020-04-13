@@ -29,11 +29,25 @@ body
 {
 	min-width: 600px;
 	padding: 5% 2%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 main
 {
 	border-radius: 10px;
+	overflow: hidden;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.content
+{
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 header
@@ -75,6 +89,7 @@ header > ul
 .tab-pane > ul
 {
 	margin: 0;
+	min-height: 100%;
 }
 
 .nav-link, .nav-item
@@ -150,9 +165,9 @@ header > ul
 	color: #968B87;
 	text-transform: uppercase;
 	font-weight: 800;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .recipe
@@ -354,6 +369,7 @@ header > ul
 	display: flex;
 	position: relative;
 	top: -1px;
+	flex-grow: 1;
 }
 
 .nav-item
@@ -378,7 +394,7 @@ header > ul
 	background-color: white;
 	position: absolute;
 	z-index: 1000;
-	right: 0;
+	right: -25px;
 	top: 50px;
 	border-radius: 10px;
 	width: 400px;
@@ -620,10 +636,9 @@ img
 	#results
 	{
 		width: 33.33%;
+		border-right: 1px solid rgba(150, 139, 135, 0.2);
 	}
 }
-
-
 
 .loading
 {
