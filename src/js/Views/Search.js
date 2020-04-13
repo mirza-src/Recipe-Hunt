@@ -52,6 +52,13 @@ export default class Search
 	{
 		return elements.search_input.val();
 	}
+
+	static open()
+    {
+        elements.results_pane.addClass('active');
+        elements.recipe_pane.removeClass('active');
+    }
+
 	static displayLoader()
 	{
 		Utils.displayLoader(elements.results_list);

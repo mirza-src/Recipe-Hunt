@@ -184,9 +184,9 @@ header > ul
 
 .recipe-image
 {
-	height: 300px;
+	height: 400px;
 	width: 100%;
-	margin: 0;
+	margin: 20px 0;
     position: relative;
 }
 
@@ -317,6 +317,7 @@ header > ul
 	width: 100%;
 	max-width: 600px;
 	justify-content: space-between;
+	padding: 0 50px;
 }
 
 .recipe-servings img

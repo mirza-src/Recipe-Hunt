@@ -84,6 +84,7 @@ class Controller
 	}
 	static async searchControl()
 	{
+		SearchView.open();
 		SearchView.displayLoader();
 		await SearchModel.getResults(SearchView.getQuery());
 		SearchView.resetFields();
@@ -92,6 +93,7 @@ class Controller
 	}
 	static async recipeControl()
 	{
+		RecipeView.open();
 		RecipeView.displayLoader();
 		await RecipeModel.getRecipe(this.id);
 		RecipeView.resetFields();

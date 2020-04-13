@@ -25,6 +25,13 @@ export default class Recipe
     {
         elements.selected_recipe.html('');
     }
+
+    static open()
+    {
+        elements.recipe_pane.addClass('active');
+        elements.results_pane.removeClass('active');
+    }
+
     static displayLoader()
     {
         Utils.displayLoader(elements.selected_recipe);

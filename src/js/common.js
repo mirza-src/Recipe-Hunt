@@ -8,7 +8,9 @@ export const elements =
     results_list : $('.results-list'),
     selected_recipe : $('.recipe'),
     shopping_list : $('#shopping-list'),
-    result_buttons : $('.results__pages')
+    result_buttons : $('.results__pages'),
+    results_pane : $('#results, #results-link'),
+    recipe_pane : $('#recipe, #recipe-link')
 }
 
 export const selectors = 
