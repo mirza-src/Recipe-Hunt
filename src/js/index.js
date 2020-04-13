@@ -41,8 +41,7 @@ function deleteHandler()
 function addSearchHandlers()
 {
 	$(selectors.search_item).click(Controller.recipeControl);
-	$(selectors.next_button).click(pageHandler);
-	$(selectors.prev_button).click(pageHandler);
+	$(selectors.pages_buttons).click(pageHandler);
 }
 
 function addRecipeHandlers()
@@ -122,7 +121,7 @@ class Controller
 		window.selected = {};
 		window.shopping = {}
 		window.likes = [];
-		this.defaultRender();
+		// this.defaultRender();
 		elements.search_button.click(this.searchControl);
 	}
 }

@@ -8,15 +8,14 @@ export const elements =
     results_list : $('.results-list'),
     selected_recipe : $('.recipe'),
     shopping_list : $('#shopping-list'),
-    result_buttons : $('.results__pages'),
+    result_buttons : $('.pages-buttons'),
     results_pane : $('#results, #results-link'),
     recipe_pane : $('#recipe, #recipe-link')
 }
 
 export const selectors = 
 {
-  next_button : '.results__btn--next',
-  prev_button : '.results__btn--prev',
+  pages_buttons : '.next-button, .prev-button',
   search_item : '.result-item',
   servings : '.servings-count',
   ingredients : '.ingredient-amount',

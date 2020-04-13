@@ -21,25 +21,24 @@ export default class Search
 	{
 		var current = offset / n;
 		var html = '';
+	
 		if (current > 0)
 		{
 			html += `
-			<button class="btn-inline results__btn--prev" data-offset=${offset - n}>
-				<span>Prev</span>
-				<svg class="search__icon">
-					<use href="img/icons.svg#icon-triangle-${'left'}"></use>
-				</svg>
-			</button>`;
+			<div class="prev-button shadow-pointer" data-offset=${offset - n}>
+				<img src="img/caret-left.svg">
+				<span class="empty-msg">Prev</span>
+			</div>
+			`;
 		}
 		if ((offset + n) < window.results.length)
 		{
 			html += `
-			<button class="btn-inline results__btn--next" data-offset=${offset + n}>
-				<span>Next</span>
-				<svg class="search__icon">
-					<use href="img/icons.svg#icon-triangle-${'right'}"></use>
-				</svg>
-			</button>`;
+			<div class="next-button shadow-pointer" data-offset=${offset + n}>
+				<span class="empty-msg">Next</span>
+				<img src="img/caret-right.svg">
+			</div>
+			`;
 		}
 		return html;
 	}
