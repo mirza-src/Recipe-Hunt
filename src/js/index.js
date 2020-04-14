@@ -126,6 +126,14 @@ class Controller
 		window.likes = [];
 		this.defaultRender();
 		elements.search_button.click(this.searchControl);
+		elements.search_input.keypress(function(event)
+		{
+			if (event.which == 13)
+			{
+				event.preventDefault();
+				elements.search_button.click();
+			}
+		}); 
 	}
 }
 
