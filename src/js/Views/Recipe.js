@@ -40,7 +40,7 @@ export default class Recipe
     {
         if ($.isEmptyObject(window.selected))
         {
-            elements.selected_recipe.append("<p class='empty-msg'>Select a recipe to view it's details</p>");
+            elements.selected_recipe.append("<p class='empty-msg'>Select a recipe to view its details</p>");
             return;
         }
         var flag = window.selected.liked;
