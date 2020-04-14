@@ -2,6 +2,21 @@
 export default class List
 {
     static id = 0;
+    static saveIngredients()
+    {
+        window.localStorage.setItem('ingredients', JSON.stringify(window.shopping));
+        console.log(JSON.stringify(window.shopping));
+    }
+
+    static loadIngredients()
+    {
+        let ingredients = JSON.parse(window.localStorage.getItem('ingredients'));
+        if (ingredients)
+        {
+            window.shopping = ingredients;
+        }
+        console.log(JSON.stringify(window.shopping));
+    }
     static addIngredients()
     {
         for (var i in window.selected.ingredients)
@@ -26,7 +41,6 @@ export default class List
     }
     static deleteIngredient(name)
     {
-        console.log(name);
         delete window.shopping[name];
     }
 }

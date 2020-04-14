@@ -1,6 +1,6 @@
 
 import {elements, selectors, Utils} from '../common';
-import $ from 'jquery'
+import $ from 'jquery';
 import fracty from 'fracty';
 
 export default class Recipe
@@ -56,12 +56,12 @@ export default class Recipe
         <div class="recipe-controls">
             <div class="recipe-servings">
                 <img src="img/user-friends.svg">
-                <span class="servings-count recipe-text">1</span><span class="recipe-text"> Serving</span>
+                <span class="servings-count recipe-text">1 Serving</span>
                 <div class="servings-buttons">
-                    <div class="servings-button plus shadow-pointer">
+                    <div class="servings-button plus shadow-pointer" data-amount="-1">
                         <img src="img/minus-circle.svg">
                     </div>
-                    <div class="servings-button plus shadow-pointer">
+                    <div class="servings-button plus shadow-pointer" data-amount="1">
                         <img src="img/plus-circle.svg">
                     </div>
                 </div>
@@ -94,10 +94,13 @@ export default class Recipe
         </div>
       `;
       elements.selected_recipe.append(html);
+      this.updateServings();
     }
     static updateServings()
     {
-        $(selectors.servings).html(`${window.selected.serving}`);
+        let amount = window.selected.serving;
+        let text = amount == 1 ? 'Serving' : 'Servings';
+        $(selectors.servings).html(`${amount} ${text}`);
         $(selectors.ingredients_list).html(window.selected.ingredients.map(el => this.ingredientHTML(el)).join(''));
     }
 }

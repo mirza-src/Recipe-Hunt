@@ -2,6 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports =
 {
@@ -17,12 +18,19 @@ module.exports =
 		new HtmlWebpackPlugin(
 		{
 			filename: 'index.html',
-			template: './src/index.html'
+			template: 'src/index.html'
 		}),
 		new MiniCssExtractPlugin(
 		{
 			filename: 'css/style.css'
-		})
+		}),
+		new CopyPlugin(
+		[
+			{
+				from : 'src/img/', 
+				to : 'img/'
+			}
+    	])
 	],
 	module:
 	{
@@ -47,41 +55,11 @@ module.exports =
 					MiniCssExtractPlugin.loader,
 					'css-loader'
 				],
-			},
-			{
-				test: /\.html$/,
-				loader: 'html-loader',
-				options:
-				{
-					attributes:
-					{
-						list:
-						[
-							{
-								tag: 'img',
-								attribute: 'src',
-								type: 'src',
-							},
-						]
-					}
-				}
-			},
-			{
-				test: /\.(svg|png|jpe?g|gif)$/i,
-				loader: 'file-loader',
-				options:
-				{
-					outputPath: 'res',
-				}
-			},
+			}
 		]
 	},
 	devServer:
 	{
 		contentBase: './build'
-	},
-	node:
-	{
-		fs: 'empty'
 	}
 };

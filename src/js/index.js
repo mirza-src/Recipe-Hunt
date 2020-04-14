@@ -35,6 +35,7 @@ function deleteHandler()
 	console.log(window.shopping);
 	ListView.resetFields();
 	ListView.updateView();
+	ListModel.saveIngredients();
 	addListHandlers()
 }
 
@@ -69,6 +70,7 @@ class Controller
 		ListModel.addIngredients();
 		ListView.resetFields();
 		ListView.updateView();
+		ListModel.saveIngredients();
 		addListHandlers();
 	}
 	static likeControl()
@@ -76,6 +78,7 @@ class Controller
 		LikeModel.toggleLike();
 		LikeView.resetFileds();
 		LikeView.updateView();
+		LikeModel.saveLikes();
 		RecipeView.resetFields();
 		RecipeView.updateView();
 		addRecipeHandlers();
@@ -109,7 +112,7 @@ class Controller
 		LikeView.resetFileds();
 		LikeView.updateView();
 		addLikeHandlers();
-		// ListView.loadList();
+		ListModel.loadIngredients();
 		ListView.resetFields();
 		ListView.updateView();
 		addListHandlers();
@@ -121,7 +124,7 @@ class Controller
 		window.selected = {};
 		window.shopping = {}
 		window.likes = [];
-		// this.defaultRender();
+		this.defaultRender();
 		elements.search_button.click(this.searchControl);
 	}
 }

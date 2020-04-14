@@ -12,13 +12,11 @@ export default class Like
             }
         );
         window.selected.liked = true;
-        this.saveLikes()
     }
     static removeLike(index)
     {
         window.likes.splice(index, 1);
         window.selected.liked = false;
-        this.saveLikes();
     }
 
     static toggleLike()
@@ -40,12 +38,12 @@ export default class Like
 
     static saveLikes()
     {
-        window,localStorage.setItem('likes', JSON.stringify(window.likes));
+        window.localStorage.setItem('likes', JSON.stringify(window.likes));
     }
 
     static loadLikes()
     {
-        let likes = JSON.parse(localStorage.getItem('likes'));
+        let likes = JSON.parse(window.localStorage.getItem('likes'));
         if (likes)
         {
             window.likes = likes;

@@ -60,6 +60,7 @@ export default class Search
 
 	static displayLoader()
 	{
+		elements.result_buttons.html('');
 		Utils.displayLoader(elements.results_list);
 	}
 	static updateView(offset=0, n=10)

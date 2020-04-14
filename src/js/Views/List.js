@@ -1,5 +1,6 @@
 
 import {elements} from '../common';
+import fracty from 'fracty';
 
 export default class List
 {
@@ -8,8 +9,7 @@ export default class List
         let html = `
         <li class="list-item" data-id="${ingredient.id}" data-name="${name}">
             <div class="item-count">
-                <input type="number" value="${ingredient.amount}" min="0" step="any">
-                <span class="item-unit">${ingredient.unit}</span>
+                <div class="item-unit">${fracty(ingredient.amount)} ${ingredient.unit}</div>
             </div>
             <div class="item-name recipe-text">${name}</div>
             <div class="delete-icon shadow-pointer">
