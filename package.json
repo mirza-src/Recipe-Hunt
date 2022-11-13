@@ -37,6 +37,6 @@
     "fracty": "^1.0.9",
     "popper.js": "^1.16.1",
     "regenerator-runtime": "^0.13.5",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   }
 }
